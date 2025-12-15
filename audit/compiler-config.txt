@@ -1,0 +1,10 @@
+Solidity version: 0.8.26 (v0.8.26+commit.8a97fa7a)
+Optimizer: Disabled
+Optimizer runs: 200 (not applicable when optimizer is disabled)
+EVM version: default
+
+Libraries: OpenZeppelin Contracts (@openzeppelin/contracts) v5.x (see notes)
+
+Notes:
+- These settings match the verified contract on BscScan.
+- OpenZeppelin version should match the one used during verification (Ownable(msg.sender) strongly suggests OZ v5).
