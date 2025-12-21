@@ -17,3 +17,20 @@ This audit package covers ONLY the minimal token contract:
 - No blacklist / whitelist
 - No pausable / fee / tax logic
 - Not upgradeable (no proxy)
+
+## Ownership & Treasury Control (Post-Deployment)
+
+- The contract uses OpenZeppelin `Ownable`, which is a single-step ownership transfer mechanism.
+  The team acknowledges the risk of mis-sending ownership to an incorrect address.
+
+- After deployment, **contract ownership and the full token treasury** have been transferred to a multisignature wallet for risk reduction.
+
+Multisignature wallet (current owner & treasury):
+0x821BC77EF8156dc4E8C5aA4AaA9A51fecf17f665
+
+## Token Utility
+
+MTX is intended to be used as a governance token for the Matrix ecosystem.
+At the current stage, governance decisions are coordinated off-chain and executed on-chain via the multisignature wallet.
+
+No on-chain governance, timelock, vesting, or token locking mechanisms are implemented at this stage.
