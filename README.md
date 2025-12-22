@@ -2,14 +2,14 @@
 This audit package covers ONLY the minimal token contract:
 
 - File: `MatrixToken.sol`
-- Contract: `Matrix` (ERC20, Ownable)
+- Contract: `Matrix` (ERC20, Ownable2Step)
 - Logic: one-time mint in constructor only
 
 ## Deployment Reference
 - Network: BNB Smart Chain
-- Contract Address: 0x584A8d8aAD85D6B38dEd30210203bd6f7980Ea4b
-- Verified Source: https://bscscan.com/address/0x584A8d8aAD85D6B38dEd30210203bd6f7980Ea4b#code
-- Deployment Tx Hash: 0xa256a2959fe8ddbcc3896e6d5a3f5d2c99aaa82cfc19b56f0e247bb79ed171c9
+- Contract Address: 0x60225866c67cfa38f9f5e4d2bc0e60ccdb9034ce
+- Verified Source: https://bscscan.com/address/0x60225866c67cfa38f9f5e4d2bc0e60ccdb9034ce#code
+- Deployment Tx Hash: 0x3bf8fde8c6bc852f9f5ac5ccbaa42985714692079a53d8a53d112d42f02298e8
 
 ## Notes
 - No minting after deployment
@@ -20,8 +20,11 @@ This audit package covers ONLY the minimal token contract:
 
 ## Ownership & Treasury Control (Post-Deployment)
 
-- The contract uses OpenZeppelin `Ownable`, which is a single-step ownership transfer mechanism.
-  The team acknowledges the risk of mis-sending ownership to an incorrect address.
+- The contract uses OpenZeppelin `Ownable2Step`, which implements a two-step ownership transfer mechanism
+  (nominate `pendingOwner` → `acceptOwnership()`).
+  This reduces the risk of permanently losing ownership due to an accidental transfer to an incorrect address.
+  When transferring ownership to a multisignature (Safe) address, the second step (`acceptOwnership()`) is executed
+  by the multisig itself via a contract interaction transaction.
 
 - After deployment, **contract ownership and the full token treasury** have been transferred to a multisignature wallet for risk reduction.
 
